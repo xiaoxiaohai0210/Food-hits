@@ -1,0 +1,85 @@
+<template>
+  <view class="listitem">
+    <view class="image">
+      <image src="{{ image }}"/>
+    </view>
+    <text class="restaurant">{{ restaurant }}</text>
+    <text class="dishName">{{ dishName }}</text>
+    <button class="pickUp">{{ pickUp }}</button>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class ListItem extends wepy.component {
+    props = {
+      id: {
+        type: Number,
+        default: 0
+      },
+      image: {
+        type: String,
+        default: ''
+      },
+      restaurant: {
+        type: String,
+        default: ''
+      },
+      dishName: {
+        type: String,
+        default: ''
+      },
+      pickUp: {
+        type: String,
+        default: '打榜'
+      }
+    }
+    methods = {
+    }
+  }
+</script>
+
+<style lang="less">
+  .listitem {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 50%;
+    float: left;
+    background-color: #fff;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 0 0 12px 2px rgba(0,0,0,.08);
+    margin-bottom: 10%;
+    .image {
+      display: block;
+      width: 100%;
+      height: 80%;
+      image {
+        display: block;
+        width: 100%;
+      }
+    }
+    .restaurant {
+      float: left;
+      font-weight: bold;
+      font-size: 36rpx;
+      margin-top: 30rpx;
+      padding: 20rpx;
+    }
+    .dishName {
+      display: block;
+      float: left;
+      font-size: 28rpx;
+      padding: 30rpx;
+      width: 20%;
+    }
+    .pickUp {
+      position: absolute;
+      right: 2%;
+      bottom: 2%;
+    }
+  }
+</style>

@@ -1,0 +1,133 @@
+<template>
+<view>
+    <view class="footerTitle">
+        <view class="title">
+            <text class="lastCuisine">{{ lastCuisine }}</text>
+        </view>
+    </view>
+    <view class="footerItem">
+        <view class="image">
+            <image src="{{ all.image }}"/>
+        </view>
+        <text class="restaurant">{{ all.restaurant }}</text>
+        <text class="dishName">{{ all.dishName }}</text>
+        <button class="detail">{{ all.detail }}</button>
+    </view>
+    <view class="footerSlogan">
+        <view class="title">
+            <text class="Slogan">{{ Slogan }}</text>
+        </view>
+    </view>
+</view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class footer extends wepy.component {
+    props = {
+        lastCuisine: {
+            type: String,
+            default: '上期人气王'
+        },
+        detail: {
+            type: String,
+            default: '详情'
+        },
+        Slogan: {
+            type: String,
+            default: '------lalalalala------'
+        }
+        ,
+        all: {
+            type: Object,
+            default: {
+                lastCuisine: '',
+                image: '',
+                restaurant: '',
+                dishName: ''
+            }
+        }
+    }
+    methods = {
+    }
+  }
+</script>
+
+<style lang="less">
+  .footerTitle {
+        height: 8vh;
+        width: 100%;
+        overflow: hidden;
+        background: #f9fbff;
+        .title {
+            display: block;
+            float: left;
+            height: 8vh;
+            margin-left: 3%;
+            .lastCuisine {
+                line-height: 8vh;
+            }
+        }
+  }
+  .footerSlogan {
+        height: 8vh;
+        width: 100%;
+        overflow: hidden;
+        background: #f9fbff;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        padding: 3% 0 2% 0;
+        .title {
+            display: block;
+            float: left;
+            height: 8vh;
+            margin-left: 3%;
+            .Slogan {
+                line-height: 8vh;
+            }
+        }
+  }
+  .footerItem {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 50%;
+        float: left;
+        background-color: #fff;
+        box-sizing: border-box;
+        border-radius: 5px;
+        box-shadow: 0 0 12px 2px rgba(0,0,0,.08);
+        margin-top: 3%;
+        .image {
+            display: block;
+            width: 100%;
+            height: 80%;
+            image {
+            display: block;
+            width: 100%;
+            }
+        }
+        .restaurant {
+            float: left;
+            font-weight: bold;
+            font-size: 36rpx;
+            margin-top: 30rpx;
+            padding: 20rpx;
+        }
+        .dishName {
+            display: block;
+            float: left;
+            font-size: 28rpx;
+            padding: 30rpx;
+            width: 20%;
+        }
+        .detail {
+            position: absolute;
+            right: 2%;
+            bottom: 2%;
+        }
+  }
+</style>

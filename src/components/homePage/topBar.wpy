@@ -1,0 +1,49 @@
+<template>
+  <view class="topBar">
+    <view class="title">
+      <text class="todayDish">{{ currentCuisine }}</text>
+    </view>
+    <button class="share"><button>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class topBar extends wepy.component {
+    props = {
+      currentCuisine: {
+        type: String,
+        default: '本期美食'
+      }
+    }
+    methods = {
+    }
+  }
+</script>
+
+<style lang="less">
+  .topBar {
+      top: 0%;
+      position: relative;
+      height: 8vh;
+      width: 100%;
+      overflow: hidden;
+      background: #f9fbff;
+      .title {
+        display: block;
+        float: left;
+        height: 8vh;
+        margin-left: 3%;
+        .todayDish {
+            line-height: 8vh;
+        }
+      }
+      .share {
+        position: absolute;
+        right: 5%;
+        width: 20vw;
+        height: 8vh;
+      }
+  }
+</style>

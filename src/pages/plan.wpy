@@ -1,0 +1,71 @@
+<template>
+  <view>
+    <topbar></topbar>
+    <view class="wrap">
+        <repeat for="{{ planList }}" key="index" index="index" item="item">
+            <listitem 
+              :id="item.id"
+              :image="item.image"
+              :restaurant="item.restaurant"
+              :dishName="item.dishName">
+            </listitem>
+        </repeat>
+        <footer :all = "lastDish"></footer>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import ListItem from '@/components/homePage/listItem'
+  import topBar from '@/components/homePage/topBar'
+  import footer from '@/components/homePage/footer'
+
+  export default class Plan extends wepy.page {
+    config = {
+      navigationBarTitleText: '美食打榜'
+    }
+
+    data = {
+      planList: [
+        {
+          id: 1,
+          image: '/images/reading.png',
+          restaurant: '饭店1',
+          dishName: '菜品'
+        },
+        {
+          id: 2,
+          image: '/images/reading.png',
+          restaurant: '饭店2',
+          dishName: '菜品'
+        },
+        {
+          id: 3,
+          image: '/images/reading.png',
+          restaurant: '饭店3',
+          dishName: '菜品'
+        }
+      ],
+      lastDish: {
+        id: 100,
+        image: '/images/reading.png',
+        restaurant: '饭店100',
+        dishName: '菜品'
+      }
+    }
+
+    components = {
+      listitem: ListItem,
+      topbar: topBar,
+      footer: footer
+    }
+  }
+</script>
+
+<style lang="less">
+  .wrap {
+    padding: 3%;
+    height: 100%;
+  }
+</style>

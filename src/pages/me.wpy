@@ -1,0 +1,180 @@
+<template>
+  <view class="wrap">
+    <view class="topareaUp">
+      <view class="left">
+        <image src="{{userInfo.avatarUrl}}"/>
+      </view>
+      <view class="center">
+        <text>用户名：{{ userInfo.nickName }}</text>
+      </view>
+      <view class="right">
+        <text>本期已打榜√</text>
+      </view>
+    </view>
+
+    <view class="topareaDown">
+      <view class="left">
+        <text>{{ allPick }}</text>
+        <text>全部打榜</text>
+      </view>
+      <view class="center">
+        <text>{{ successPick }}</text>
+        <text>成功打榜</text>
+      </view>
+      <view class="right">
+        <text>{{ curScore }}</text>
+        <text>当前积分</text>
+      </view>
+    </view>
+
+    <!-- 菜单列表 -->
+    <view class="menulist">
+      <view class="menuitem">
+        <view class="icon iconfont icon-star"></view>
+        <text>打榜规则</text>
+      </view>
+      <view class="menuitem">
+        <view class="icon iconfont icon-star"></view>
+        <text>联系我们</text>
+      </view>
+      <view class="menuitem">
+        <view class="icon iconfont icon-star"></view>
+        <text>吐槽我们</text>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  export default class Me extends wepy.page {
+    config = {
+      navigationBarTitleText: '我的'
+    }
+
+    data = {
+      userInfo: {},
+      allPick: 10,
+      successPick: 120,
+      curScore: 90
+    }
+
+    onLoad() {
+      let self = this
+      self.userInfo = {
+        nickName: '游客' // defualt
+      }
+      this.$parent.getUserInfo(function (userInfo) {
+        if (userInfo) {
+          self.userInfo = userInfo
+        }
+        self.$apply()
+      })
+    }
+  }
+</script>
+
+<style lang="less">
+  .topareaUp{
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 30rpx 0;
+    background-color: #138cff;
+    .check{
+      width: 25rpx;
+    }
+    text{
+      display: block;
+      color: #fff;
+      font-size: 32rpx;
+      font-weight: bold;
+    }
+    image{
+      display: block;
+      width: 100rpx;
+      height: 100rpx;
+      border-radius: 100%;
+      border: 1rpx solid #f8f8f8;
+    }
+    .left, .right{
+      display: flex;
+      width: 25%;
+      height: 100rpx;
+      justify-content: center;
+      align-items: center;
+      text:last-child{
+        margin-top: 10rpx;
+      }
+    }
+    .center{
+      height: 100rpx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      text:last-child{
+        margin-top: 10rpx;
+      }
+    }
+  }
+  .topareaDown{
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    text-align: center;
+    padding: 0 0 30rpx 0;
+    margin-bottom: 20rpx;
+    background-color: #138cff;
+    text{
+      display: block;
+      color: #fff;
+    }
+    .left, .right{
+      width: 25%;
+      text:last-child{
+        margin-top: 10rpx;
+        font-size: 28rpx;
+        font-weight: bold;
+        color: #fff;
+      }
+    }
+    .center{
+      flex: 1;
+      text:last-child{
+        margin-top: 10rpx;
+        font-size: 28rpx;
+        font-weight: bold;
+      }
+    }
+  }
+
+
+  .menulist{
+    margin-bottom: 20rpx;
+    background-color: #fff;
+    .menuitem{
+      display: flex;
+      padding: 30rpx;
+      transition: background-color 0.3s;
+      .icon{
+        margin-right: 20rpx;
+        width: 50rpx;
+        height: 50rpx;
+        text-align: center;
+      }
+      text{
+        flex: 1;
+        display: block;
+        height: 50rpx;
+        line-height: 50rpx;
+        font-size: 26rpx;
+        color: #666;
+      }
+    }
+    .menuitem:active{
+      background-color: #f8f8f8;
+    }
+  }
+</style>
